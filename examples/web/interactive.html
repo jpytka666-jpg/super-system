@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Learning - See Code in Action!</title>
+    <style>
+        /*
+        CSS (Cascading Style Sheets) - This makes things look pretty
+        Each rule selects elements and defines how they should look
+        */
+        
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 5px;
+        }
+        
+        .output {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            min-height: 40px;
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+        
+        .counter {
+            font-size: 48px;
+            text-align: center;
+            color: #667eea;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Interactive Learning</h1>
+        <p style="text-align: center; font-size: 18px;">
+            Click buttons and see your code respond in real-time!
+        </p>
+        
+        <!-- SECTION 1: Basic Button Click -->
+        <div class="section">
+            <h2>1️⃣ Basic Button - See Events in Action</h2>
+            <p>
+                When you click a button, JavaScript can respond to that "event".<br>
+                <strong>Try it:</strong> Click the button below!
+            </p>
+            <button onclick="handleBasicClick()">Click Me!</button>
+            <div id="basicOutput" class="output">Click the button to see magic! ✨</div>
+            
+            <details style="margin-top: 15px;">
+                <summary><strong>🔍 How does this work?</strong></summary>
+                <p>The button has <code>onclick="handleBasicClick()"</code></p>
+                <p>This tells the browser: "When clicked, run the handleBasicClick function"</p>
+                <p>The function changes the text in the output box</p>
+            </details>
+        </div>
+        
+        <!-- SECTION 2: Counter -->
+        <div class="section">
+            <h2>2️⃣ Counter - Working with Variables</h2>
+            <p>
+                Variables store data. Watch how a variable changes when you interact with it!
+            </p>
+            <div class="counter" id="counterDisplay">0</div>
+            <button onclick="incrementCounter()">➕ Add 1</button>
+            <button onclick="decrementCounter()">➖ Subtract 1</button>
+            <button onclick="resetCounter()">🔄 Reset</button>
+            
+            <details style="margin-top: 15px;">
+                <summary><strong>🔍 How does this work?</strong></summary>
+                <p>We have a variable: <code>let counter = 0</code></p>
+                <p>Each button changes this variable: <code>counter++</code> or <code>counter--</code></p>
+                <p>Then we update what you see on screen</p>
+            </details>
+        </div>
+        
+        <!-- SECTION 3: Text Input -->
+        <div class="section">
+            <h2>3️⃣ Text Input - Getting User Data</h2>
+            <p>
+                Programs need to get input from users. Type your name and click the button!
+            </p>
+            <input type="text" id="nameInput" placeholder="Enter your name">
+            <button onclick="greetUser()">👋 Greet Me</button>
+            <div id="greetOutput" class="output">Waiting for your name...</div>
+            
+            <details style="margin-top: 15px;">
+                <summary><strong>🔍 How does this work?</strong></summary>
+                <p>JavaScript can get the value from an input: <code>document.getElementById('nameInput').value</code></p>
+                <p>Then we use that value in our code: <code>"Hello, " + name + "!"</code></p>
+                <p>This is how forms, login screens, and chat apps work!</p>
+            </details>
+        </div>
+        
+        <!-- SECTION 4: Calculator -->
+        <div class="section">
+            <h2>4️⃣ Mini Calculator - Logic and Functions</h2>
+            <p>
+                Combine input with calculations to create interactive tools!
+            </p>
+            <input type="number" id="num1" placeholder="First number" value="5">
+            <select id="operation">
+                <option value="add">➕ Add</option>
+                <option value="subtract">➖ Subtract</option>
+                <option value="multiply">✖️ Multiply</option>
+                <option value="divide">➗ Divide</option>
+            </select>
+            <input type="number" id="num2" placeholder="Second number" value="3">
+            <button onclick="calculate()">= Calculate</button>
+            <div id="calcOutput" class="output">Result will appear here</div>
+            
+            <details style="margin-top: 15px;">
+                <summary><strong>🔍 How does this work?</strong></summary>
+                <p>1. Get the numbers from inputs</p>
+                <p>2. Get the selected operation</p>
+                <p>3. Use if/else or switch to decide what math to do</p>
+                <p>4. Show the result</p>
+            </details>
+        </div>
+        
+        <!-- SECTION 5: Color Changer -->
+        <div class="section" id="colorSection">
+            <h2>5️⃣ Color Changer - Modifying Styles</h2>
+            <p>
+                JavaScript can change how things look. Watch this box change colors!
+            </p>
+            <button onclick="changeColor('red')">🔴 Red</button>
+            <button onclick="changeColor('green')">🟢 Green</button>
+            <button onclick="changeColor('blue')">🔵 Blue</button>
+            <button onclick="changeColor('#FFD700')">🟡 Gold</button>
+            
+            <details style="margin-top: 15px;">
+                <summary><strong>🔍 How does this work?</strong></summary>
+                <p>JavaScript can change CSS: <code>element.style.background = color</code></p>
+                <p>This is how themes, dark mode, and visual effects work!</p>
+            </details>
+        </div>
+    </div>
+    
+    <script>
+        /*
+        JAVASCRIPT - This makes things interactive!
+        These functions are called when you click buttons
+        */
+        
+        // SECTION 1: Basic Click Handler
+        let clickCount = 0;
+        function handleBasicClick() {
+            clickCount++;
+            const output = document.getElementById('basicOutput');
+            output.textContent = `🎉 You clicked the button ${clickCount} time(s)!`;
+            
+            // Add a fun animation effect
+            output.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                output.style.transform = 'scale(1)';
+            }, 200);
+        }
+        
+        // SECTION 2: Counter Functions
+        let counter = 0;
+        function incrementCounter() {
+            counter++;  // Same as: counter = counter + 1
+            updateCounterDisplay();
+        }
+        
+        function decrementCounter() {
+            counter--;  // Same as: counter = counter - 1
+            updateCounterDisplay();
+        }
+        
+        function resetCounter() {
+            counter = 0;
+            updateCounterDisplay();
+        }
+        
+        function updateCounterDisplay() {
+            document.getElementById('counterDisplay').textContent = counter;
+        }
+        
+        // SECTION 3: Greeting Function
+        function greetUser() {
+            // Get the value from the input field
+            const name = document.getElementById('nameInput').value;
+            const output = document.getElementById('greetOutput');
+            
+            // Check if they entered a name
+            if (name === '') {
+                output.textContent = '⚠️ Please enter your name first!';
+            } else {
+                output.textContent = `👋 Hello, ${name}! Welcome to coding! 🚀`;
+            }
+        }
+        
+        // SECTION 4: Calculator Function
+        function calculate() {
+            // Get the values from inputs
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operation = document.getElementById('operation').value;
+            const output = document.getElementById('calcOutput');
+            
+            let result;
+            
+            // Decide what operation to perform
+            switch(operation) {
+                case 'add':
+                    result = num1 + num2;
+                    output.textContent = `${num1} + ${num2} = ${result}`;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    output.textContent = `${num1} - ${num2} = ${result}`;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    output.textContent = `${num1} × ${num2} = ${result}`;
+                    break;
+                case 'divide':
+                    if (num2 === 0) {
+                        output.textContent = '⚠️ Cannot divide by zero!';
+                    } else {
+                        result = num1 / num2;
+                        output.textContent = `${num1} ÷ ${num2} = ${result}`;
+                    }
+                    break;
+            }
+        }
+        
+        // SECTION 5: Color Changer Function
+        function changeColor(color) {
+            const section = document.getElementById('colorSection');
+            section.style.background = color;
+            section.style.transition = 'background 0.5s';
+            
+            // Change text color for readability
+            if (color === 'red' || color === 'green' || color === 'blue') {
+                section.style.color = 'white';
+            } else {
+                section.style.color = '#333';
+            }
+        }
+    </script>
+    
+    <!-- 
+    ========================================
+    WHAT YOU'VE LEARNED:
+    ========================================
+    
+    1. HTML creates the structure (buttons, inputs, text)
+    2. CSS makes it look good (colors, spacing, animations)
+    3. JavaScript makes it interactive (responding to clicks)
+    
+    HOW THE PIECES WORK TOGETHER:
+    - HTML has an element with id="something"
+    - JavaScript finds it: document.getElementById('something')
+    - JavaScript reads or changes it
+    - You see the result immediately!
+    
+    EXPERIMENT IDEAS:
+    - Change button colors in CSS
+    - Add new buttons that do different things
+    - Make the counter jump by 5 or 10
+    - Add more math operations (power, square root)
+    - Create your own interactive element
+    
+    This is the foundation of web development!
+    Every website you use works this way.
+    ========================================
+    -->
+</body>
+</html>
