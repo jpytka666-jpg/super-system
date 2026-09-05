@@ -1,0 +1,36 @@
+# super-system-header-v1
+# AUTHOR: M. SZUL
+# CREATED: 2026-09-05 Europe/London
+# PURPOSE: Verify Warlock/Kali policy core on every relevant change.
+
+name: warlock-kali-ci
+
+on:
+  push:
+    branches:
+      - feat/warlock-kali-lab-foundation
+    paths:
+      - 'warlock-kali-core/**'
+      - '.github/workflows/warlock-kali-ci.yml'
+  pull_request:
+    paths:
+      - 'warlock-kali-core/**'
+      - '.github/workflows/warlock-kali-ci.yml'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: warlock-kali-core
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy,rustfmt
+      - name: Format check
+        run: cargo fmt --check
+      - name: Tests
+        run: cargo test --all-targets
+      - name: Clippy
+        run: cargo clippy --all-targets -- -D warnings
