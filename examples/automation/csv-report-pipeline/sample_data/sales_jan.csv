@@ -1,0 +1,8 @@
+date,region,product,amount
+2026-01-02,North,Widget,120.00
+2026-01-02,North,Widget,120.00
+2026-01-03,South,Gadget,75.50
+2026-01-03, South , Gadget ,75.50
+2026-01-04,East,Widget,99.90
+
+2026-01-05,West,Gizmo,210.00
